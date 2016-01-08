@@ -42,8 +42,8 @@ INSTALLED_APPS = (
     'users',
     'productos',
     'django_extensions',
-    'django_spaghetti',
-    'captcha',
+    #'django_spaghetti',
+    #'captcha',
     'social.apps.django_app.default',
 )
 

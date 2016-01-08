@@ -4,8 +4,6 @@
     <data-source source="LOCAL" name="db" uuid="ae2bfd56-fd2e-42bc-82bb-279cddc4561f">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>SQLite</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\comp-1\PycharmProjects\SRTodo001\db.sqlite3</jdbc-url>
       <libraries>
