@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+     <style>
+        body{
+            margin-top: 60px;
+        }
+        .jumbotron {
+            margin-bottom: 10px;
+        }
+        .page-header {
+            margin: 5px 0 20px !important;
+            font-weight: bolder;
+        }
+        .eventos,
+        .categorias,
+        .organizadores {
+            margin-bottom: 30px;
+        }
+        .contenedor-eventos {
+            margin-top: 15px
+        }
+        @media screen and (max-width: 480px) {
+            .categorias .btn-fix {
+                margin-top: 7px;
+            }
+            .categorias .row {
+                text-align: center;
+            }
+            .categorias a {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Registro y login de usuarios Ona</h1>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="col-md-push-3 col-md-3 text-center">
+                    <p>
+                        <a href="#" class="btn btn-primary btn-lg btn-block">Registrate con Facebook</a>
+                        <a href="#" class="btn btn-danger btn btn-block">Registrate con Google G+</a>
+                    </p>
+                    <hr/>
+                    <form action="" role="form" method="post"> {% csrf_token %}
+                        <p class="text-center">Registrate y empieza a crear y compartir tus eventos:</p>
+                        <div class="form-group">
+                            {{ user_register.username }}
+                            {{ user_register.username.errors }}
+
+                        </div>
+                        <div class="form-group">
+                            {{ user_register.email }}
+                            {{ user_register.email.errors }}
+                        </div>
+                         <div class="form-group">
+                             {{ user_register.password }}
+                             {{ user_register.password.errors }}
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" name="register_form">Sign up</button>
+                    </form>
+                </div>
+
+                <div class="col-md-push-3 col-md-3 text-left">
+                    <form  role="form" method="post">
+                        {% csrf_token %}
+                        <p class="text-center">Ingresa tus credenciales y accede al sistema web</p>
+                        <div class="form-group">
+                            {{ login_form.username }}
+                            {{ login_forms.username.errors }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ login_form.password }}
+                            {{ login_forms.password.errors }}
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" name="login_form">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
