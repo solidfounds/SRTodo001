@@ -317,8 +317,8 @@
                                 {{ user_register.username.errors }}
 
                                 <span ng-show="myForm.username.$error.required &amp;&amp; myForm.username.$dirty" style="display: none;">required</span>
-                                <span ng-show="!myForm.username.$error.minLength &amp;&amp; !myForm.username.$error.maxLength &amp;&amp; myForm.username.$error.pattern &amp;&amp; myForm.username.$dirty" style="display: none;">Must start with a letter, and contain letters &amp; numbers only.</span>
-                                <span ng-show="!myForm.username.$error.required &amp;&amp; (myForm.username.$error.minlength || myForm.username.$error.maxlength) &amp;&amp; myForm.username.$dirty" style="display: none;">Username ust be between 5 and 20 characters.</span>
+                                <span ng-show="!myForm.username.$error.minLength &amp;&amp; !myForm.username.$error.maxLength &amp;&amp; myForm.username.$error.pattern &amp;&amp; myForm.username.$dirty" style="display: none;">El nombre de usuario debe de contener solo letras y numeros.</span>
+                                <span ng-show="!myForm.username.$error.required &amp;&amp; (myForm.username.$error.minlength || myForm.username.$error.maxlength) &amp;&amp; myForm.username.$dirty" style="display: none;">El nombre de usuario debe de contener de 5 a 10 caracteres.</span>
                             </div>
 
                             <div>
@@ -334,18 +334,18 @@
                                  {{ user_register.password }}
                                  {{ user_register.password.errors }}
                                  <span ng-show="myForm.password.$error.required &amp;&amp; myForm.password.$dirty" style="display: none;">required</span>
-                                <span ng-show="!myForm.password.$error.required &amp;&amp; (myForm.password.$error.minlength || myForm.password.$error.maxlength) &amp;&amp; myForm.password.$dirty" style="display: none;">Passwords must be between 8 and 20 characters.</span>
-                                <span ng-show="!myForm.password.$error.required &amp;&amp; !myForm.password.$error.minlength &amp;&amp; !myForm.password.$error.maxlength &amp;&amp; myForm.password.$error.pattern &amp;&amp; myForm.password.$dirty" style="display: none;">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+                                <span ng-show="!myForm.password.$error.required &amp;&amp; (myForm.password.$error.minlength || myForm.password.$error.maxlength) &amp;&amp; myForm.password.$dirty" style="display: none;">La contraseña debe tener entre 8 y 20 caracteres.</span>
+                                <span ng-show="!myForm.password.$error.required &amp;&amp; !myForm.password.$error.minlength &amp;&amp; !myForm.password.$error.maxlength &amp;&amp; myForm.password.$error.pattern &amp;&amp; myForm.password.$dirty" style="display: none;">La contraseña debe contener una mayuscula, y un caracter especial (número o símbolo).</span>
                             </div>
 
 
 
 
                             <div>
-                                <label for="password_c">Confirm Password</label>
+                                <label for="password_c">Confirmar contraseña:</label>
                                 <input type="password" id="password_c" name="password_c" ng-model="formData.password_c" valid-password-c="" required="" class="ng-pristine ng-invalid ng-invalid-required form-group form-control">
-                                 <span ng-show="myForm.password_c.$error.required &amp;&amp; myForm.password_c.$dirty" style="display: none;">Please confirm your password.</span>
-                                <span ng-show="!myForm.password_c.$error.required &amp;&amp; myForm.password_c.$error.noMatch &amp;&amp; myForm.password.$dirty" style="display: none;">Passwords do not match.</span>
+                                 <span ng-show="myForm.password_c.$error.required &amp;&amp; myForm.password_c.$dirty" style="display: none;">Por favor confirma tu contraseña.</span>
+                                <span ng-show="!myForm.password_c.$error.required &amp;&amp; myForm.password_c.$error.noMatch &amp;&amp; myForm.password.$dirty" style="display: none;">Las contraseñas no coinciden.</span>
                             </div>
                             <button type="submit" class="btn btn-success" ng-disabled="!myForm.$valid" disabled="disabled">Submit</button>
                    </form>
