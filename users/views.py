@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render,redirect
 from django.contrib.auth import logout, authenticate
-from .forms import UserRegisterForm, LoginForm, CaptchaUserCreationForm,CaptchaField
+from .forms import UserRegisterForm, LoginForm
 from .models import User
 from .functions import LogIn
 from django.http import HttpResponseRedirect

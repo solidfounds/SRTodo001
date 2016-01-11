@@ -25,7 +25,7 @@ urlpatterns = [
 
     url(r'^inmobiliario/$', 'vistas.views.inmobiliario', name='inmobiliario'),
     url(r'^producto/$', 'vistas.views.producto', name='producto'),
-     url(r'^plate/', include('django_spaghetti.urls')),
+    #url(r'^plate/', include('django_spaghetti.urls')),
 
 
      #url(r'^$', 'users.views.userlogin', name='login'),

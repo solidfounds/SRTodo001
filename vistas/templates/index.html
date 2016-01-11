@@ -295,12 +295,13 @@
                     <h4 class="modal-title" id="myModalLabel">Registrate</h4>
                   </div>
                   <div class="modal-body">
-                      <form action="" role="form" method="post"> {% csrf_token %}
+
                             <h5 class="text-center"><strong>Registrate y empieza a crear y compartir tus eventos:</strong></h5>
 
 
                 <div ng-app="myapp" class="ng-scope">
-                   <form name="myForm" class="ng-pristine ng-invalid ng-invalid-required">
+                   <form name="myForm" class="ng-pristine ng-invalid ng-invalid-required" role="form" method="post">
+                       {% csrf_token %}
                             <div >
                                 <label for="email">Email</label>
                                 {{ user_register.email }}
@@ -351,9 +352,6 @@
                             <button type="submit" class="btn" ng-disabled="!myForm.$valid" disabled="disabled">Submit</button>
                    </form>
                 </div>
-
-
-
                            <div>
                                 <h5 class = "text-center"><strong>Registrate con redes sociales</strong></h5>
                                 {% if user.is_authenticated %}
@@ -376,9 +374,6 @@
                                     <hr>
                                 {% endif %}
                            </div>
-
-
-                      </form>
                   </div>
                 </div>
               </div>
