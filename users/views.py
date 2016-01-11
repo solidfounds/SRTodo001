@@ -36,13 +36,7 @@ def userlogin(request):
         login_form = LoginForm()
     return render(request, 'users/login.html', {'user_register': user_register, 'login_form': login_form })
 
-def Captcha(request):
-    if request.POST:
-        form = CaptchaUserCreationForm(request.POST)
-    if form.is_valid():
-        return HttpResponseRedirect('/?ok')
-    else:
-        form = CaptchaUserCreationForm()
+
 
 
 def LogOut(request):

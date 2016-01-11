@@ -257,7 +257,6 @@
 
                             <button type="submit" class="btn btn-success btn-lg btn-block" name="login_form">Ingresar</button>
                             <hr>
-
                             <div>
                                 <h5 class = "text-center"><strong>Ingresa con redes sociales</strong></h5>
                                 {% if user.is_authenticated %}
@@ -347,7 +346,7 @@
                                  <span ng-show="myForm.password_c.$error.required &amp;&amp; myForm.password_c.$dirty" style="display: none;">Por favor confirma tu contraseña.</span>
                                 <span ng-show="!myForm.password_c.$error.required &amp;&amp; myForm.password_c.$error.noMatch &amp;&amp; myForm.password.$dirty" style="display: none;">Las contraseñas no coinciden.</span>
                             </div>
-                            <button type="submit" class="btn btn-success" ng-disabled="!myForm.$valid" disabled="disabled">Submit</button>
+                            <button type="submit" class="btn btn-success" ng-disabled="!myForm.$valid" disabled="disabled">Enviar</button>
                    </form>
                 </div>
                            <div>

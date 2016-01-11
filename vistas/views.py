@@ -8,7 +8,7 @@ from productos.models import Producto
 
 def index(request):
     if request.method == 'POST':
-        if 'register_form' in request.POST:
+        if 'myForm' in request.POST:
             user_register = UserRegisterForm(request.POST)
             if user_register.is_valid():
                 User.objects.create_user(username=user_register.cleaned_data['username'],
