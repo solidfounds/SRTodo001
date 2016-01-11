@@ -320,18 +320,16 @@
                                 <span ng-show="!myForm.username.$error.minLength &amp;&amp; !myForm.username.$error.maxLength &amp;&amp; myForm.username.$error.pattern &amp;&amp; myForm.username.$dirty" style="display: none;">Must start with a letter, and contain letters &amp; numbers only.</span>
                                 <span ng-show="!myForm.username.$error.required &amp;&amp; (myForm.username.$error.minlength || myForm.username.$error.maxlength) &amp;&amp; myForm.username.$dirty" style="display: none;">Username ust be between 5 and 20 characters.</span>
                             </div>
-                       <br>
+
                             <div>
                                 <label for="name">Primer nombre</label>
                                 {{ user_register.first_name }}
                                 {{ user_register.first_name.errors }}
                                 <span ng-show="myForm.name.$error.required &amp;&amp; myForm.name.$dirty" style="display: none;">required</span>
                             </div>
-                       <br>
 
 
-                       <br>
-
+                             <label for="password_c">Password</label>
                              <div class="form-group ">
                                  {{ user_register.password }}
                                  {{ user_register.password.errors }}
@@ -345,11 +343,11 @@
 
                             <div>
                                 <label for="password_c">Confirm Password</label>
-                                <input type="password" id="password_c" name="password_c" ng-model="formData.password_c" valid-password-c="" required="" class="ng-pristine ng-invalid ng-invalid-required">
+                                <input type="password" id="password_c" name="password_c" ng-model="formData.password_c" valid-password-c="" required="" class="ng-pristine ng-invalid ng-invalid-required form-group form-control">
                                  <span ng-show="myForm.password_c.$error.required &amp;&amp; myForm.password_c.$dirty" style="display: none;">Please confirm your password.</span>
                                 <span ng-show="!myForm.password_c.$error.required &amp;&amp; myForm.password_c.$error.noMatch &amp;&amp; myForm.password.$dirty" style="display: none;">Passwords do not match.</span>
                             </div>
-                            <button type="submit" class="btn" ng-disabled="!myForm.$valid" disabled="disabled">Submit</button>
+                            <button type="submit" class="btn btn-success" ng-disabled="!myForm.$valid" disabled="disabled">Submit</button>
                    </form>
                 </div>
                            <div>
