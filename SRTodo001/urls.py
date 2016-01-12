@@ -20,11 +20,11 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'vistas.views.index', name='home'),
     url('', include('social.apps.django_app.urls', namespace='social')),
-
     url(r'^salir/$', 'users.views.LogOut', name='logout'),
-
     url(r'^inmobiliario/$', 'vistas.views.inmobiliario', name='inmobiliario'),
+
     url(r'^producto/(?P<object_id>\d+)/$', 'productos.views.producto_detalle', name='producto_detalle'),
+    url(r'^producto/(?P<slug>[\w-]+)/$', 'productos.views.producto_detalle_slug', name='producto_detalle_slug'),
     #url(r'^plate/', include('django_spaghetti.urls')),
 
 
