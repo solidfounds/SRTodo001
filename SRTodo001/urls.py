@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls import  handler404
+from vistas.views import handler404
+
+#personalizacion de error 404
+handler404 = 'vistas.views.handler404'
 
 urlpatterns = [
+        url(r'^otro-index/$', 'vistas.views.otro_index', name='logout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'vistas.views.index', name='home'),
     url('', include('social.apps.django_app.urls', namespace='social')),

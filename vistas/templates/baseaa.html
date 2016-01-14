@@ -1,3 +1,5 @@
+
+<!-- Favicons Icon -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,6 +74,131 @@
             background: #86398E;
             border: 1px solid #ADC706;
             color: #FFFFFF;
+        }
+    </style>
+    <style>
+                .rating{
+            width:80px;
+            height:16px;
+            margin:0 0 20px 0;
+            padding:0;
+            list-style:none;
+            clear:both;
+            position:relative;
+            background: url(http://www.pmob.co.uk/temp/images/star-matrix.gif) no-repeat 0 0;
+        }
+        /* add these classes to the ul to effect the change to the correct number of stars */
+        .nostar {background-position:0 0}
+        .onestar {background-position:0 -16px}
+        .twostar {background-position:0 -32px}
+        .threestar {background-position:0 -48px}
+        .fourstar {background-position:0 -64px}
+        .fivestar {background-position:0 -80px}
+        ul.rating li {
+            cursor: pointer;
+         /*ie5 mac doesn't like it if the list is floated\*/
+            float:left;
+            /* end hide*/
+            text-indent:-999em;
+        }
+        ul.rating li a {
+            position:absolute;
+            left:0;
+            top:0;
+            width:16px;
+            height:16px;
+            text-decoration:none;
+            z-index: 200;
+        }
+        ul.rating li.one a {left:0}
+        ul.rating li.two a {left:16px;}
+        ul.rating li.three a {left:32px;}
+        ul.rating li.four a {left:48px;}
+        ul.rating li.five a {left:64px;}
+        ul.rating li a:hover {
+            z-index:2;
+            width:80px;
+            height:16px;
+            overflow:hidden;
+            left:0;
+            background: url(http://www.pmob.co.uk/temp/images/star-matrix.gif) no-repeat 0 0
+        }
+        ul.rating li.one a:hover {background-position:0 -96px;}
+        ul.rating li.two a:hover {background-position:0 -112px;}
+        ul.rating li.three a:hover {background-position:0 -128px}
+        ul.rating li.four a:hover {background-position:0 -144px}
+        ul.rating li.five a:hover {background-position:0 -160px}
+        /* end rating code */
+        h3{margin:0 0 2px 0;font-size:110%}
+    </style>
+
+    <style>
+                * {
+          -webkit-box-sizing: border-box;
+             -moz-box-sizing: border-box;
+               -o-box-sizing: border-box;
+                  box-sizing: border-box;
+        }
+
+        .wrapper {
+          display: table;
+          width: 100%;
+        }
+
+        .main-content {
+          border: 1px solid #ddd;
+          background: #f4f4f4;
+          display: table-cell;
+          padding: 15px;
+          width: 70%;
+        }
+
+    </style>
+    <style>
+                  .btn-sample {
+          color: #ffffff;
+          background-color: #611BBD;
+          border-color: #690266;
+        }
+
+        .btn-sample:hover,
+        .btn-sample:focus,
+        .btn-sample:active,
+        .btn-sample.active,
+        .open .dropdown-toggle.btn-sample {
+          color: #ffffff;
+          background-color: #49247A;
+          border-color: #690266;
+        }
+
+        .btn-sample:active,
+        .btn-sample.active,
+        .open .dropdown-toggle.btn-sample {
+          background-image: none;
+        }
+
+        .btn-sample.disabled,
+        .btn-sample[disabled],
+        fieldset[disabled] .btn-sample,
+        .btn-sample.disabled:hover,
+        .btn-sample[disabled]:hover,
+        fieldset[disabled] .btn-sample:hover,
+        .btn-sample.disabled:focus,
+        .btn-sample[disabled]:focus,
+        fieldset[disabled] .btn-sample:focus,
+        .btn-sample.disabled:active,
+        .btn-sample[disabled]:active,
+        fieldset[disabled] .btn-sample:active,
+        .btn-sample.disabled.active,
+        .btn-sample[disabled].active,
+        fieldset[disabled] .btn-sample.active {
+          background-color: #611BBD;
+          border-color: #690266;
+        }
+
+        .btn-sample .badge {
+          color: #611BBD;
+          background-color: #ffffff;
         }
     </style>
     <script>
@@ -240,6 +367,21 @@
                                 {{ login_form.password }}
                                 {{ login_forms.password.errors }}
                             </div>
+
+                            <div>
+                                <h6>Ingresa con redes sociales</h6>
+                                {% if user.is_authenticated %}
+                                    Bienvenido {{ user.username }}
+                                    <a href="/salir">Salir</a>
+                                {% else %}
+                                   <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary btn-lg btn-block">Ingresa con Facebook</a>
+                                    <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-info btn-lg btn-block">Ingresa con Twitter</a>
+                                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger btn-lg btn-block">Ingresa con Google</a>
+                                    <hr>
+                                {% endif %}
+                           </div>
+
+
                             <button type="submit" class="btn btn-success btn-lg btn-block" name="login_form">Ingresar</button>
                         </form>
                   </div>
@@ -270,6 +412,23 @@
                                  {{ user_register.password }}
                                  {{ user_register.password.errors }}
                             </div>
+
+                           <div>
+                                <h6 class = "text-center">Registrate con redes sociales</h6>
+                                {% if user.is_authenticated %}
+                                    Bienvenido {{ user.username }}
+                                    <a href="/salir">Salir</a>
+                                {% else %}
+                                   <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary btn-lg btn-block">Registrate con Facebook</a>
+                                    <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-info btn-lg btn-block">Registrate con Twitter</a>
+                                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger btn-lg btn-block">Registrate con Google</a>
+                                    <hr>
+                                {% endif %}
+                           </div>
+
+
+
+
                             <button type="submit" class="btn btn-success btn-lg btn-block" name="register_form">Sign up</button>
                       </form>
                   </div>
@@ -306,7 +465,7 @@
                         <li class="level1"><a href="../jewellery/index.html"><span>Jewellery Store</span></a> </li>
                       </ul>
                     </li>
-                    <li class="level0 nav-6 level-top"> <a class="level-top" href="#"> <span>Productos </span> </a>
+                    <li class="level0 nav-6 level-top"> <a class="level-top" href="#"> <span>Productos</span> </a>
                       <ul class="level0">
                         <li class="level1 first"><a href="grid.html"><span>Grid</span></a></li>
                         <li class="level1 nav-10-2"> <a href="list.html"> <span>List</span> </a> </li>
@@ -713,100 +872,380 @@
     </div>
   </nav>
   <!-- end nav -->
+  <!-- Slider -->
+
+  <!-- end Slider -->
+  <!-- header service -->
+
+  <!-- main container -->
+   <section class="main-container col1-layout home-content-container">
+       <div class="row">
+          <div class="row">
+              <div class="col-xs-6 col-sm-2">
+                  <div class="box-content box-category">
+                    <ul>
+                <li> <a class="active" href="#/women.html">Women</a> <span class="subDropdown minus"></span>
+                  <ul class="level0_415" style="display:block">
+                    <li> <a href="#/women/tops.html"> Tops </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/women/tops/evening-tops.html"> Evening Tops </a> </li>
+                        <li> <a href="#/women/tops/shirts-blouses.html"> Shirts &amp; Blouses </a> </li>
+                        <li> <a href="#/women/tops/tunics.html"> Tunics </a> </li>
+                        <li> <a href="#/women/tops/vests.html"> Vests </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/women/bags.html"> Bags </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/women/bags/bags.html"> Bags </a> </li>
+                        <li> <a href="#/women/bags/designer-handbags.html"> Designer Handbags </a> </li>
+                        <li> <a href="#/women/bags/purses.html"> Purses </a> </li>
+                        <li> <a href="#/women/bags/shoulder-bags.html"> Shoulder Bags </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/women/shoes.html"> Shoes </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/women/shoes/flat-shoes.html"> Flat Shoes </a> </li>
+                        <li> <a href="#/women/shoes/flat-sandals.html"> Flat Sandals </a> </li>
+                        <li> <a href="#/women/shoes/boots.html"> Boots </a> </li>
+                        <li> <a href="#/women/shoes/heels.html"> Heels </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/women/Jewellery.html"> Jewellery </a>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/women/Jewellery/bracelets.html"> Bracelets </a> </li>
+                        <li> <a href="#/women/Jewellery/necklaces-pendants.html"> Necklaces &amp; Pendants </a> </li>
+                        <li> <a href="#/women/Jewellery/pins-brooches.html"> Pins &amp; Brooches </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/women/dresses.html"> Dresses </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/women/dresses/casual-dresses.html"> Casual Dresses </a> </li>
+                        <li> <a href="#/women/dresses/evening.html"> Evening </a> </li>
+                        <li> <a href="#/women/dresses/designer.html"> Designer </a> </li>
+                        <li> <a href="#/women/dresses/party.html"> Party </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/women/lingerie.html"> Lingerie </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/women/lingerie/bras.html"> Bras </a> </li>
+                        <li> <a href="#/women/lingerie/bodies.html"> Bodies </a> </li>
+                        <li> <a href="#/women/lingerie/necklaces-pendants.html"> Lingerie Sets </a> </li>
+                        <li> <a href="#/women/lingerie/shapewear.html"> Shapewear </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/women/jackets.html"> Jackets </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/women/jackets/coats.html"> Coats </a> </li>
+                        <li> <a href="#/women/jackets/jackets.html"> Jackets </a> </li>
+                        <li> <a href="#/women/jackets/leather-jackets.html"> Leather Jackets </a> </li>
+                        <li> <a href="#/women/jackets/blazers.html"> Blazers </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/women/swimwear.html"> Swimwear </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/women/swimwear/swimsuits.html"> Swimsuits </a> </li>
+                        <li> <a href="#/women/swimwear/beach-clothing.html"> Beach Clothing </a> </li>
+                        <li> <a href="#/women/swimwear/bikinis.html"> Bikinis </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                  </ul>
+                  <!--level0-->
+                </li>
+                <!--level 0-->
+                <li> <a href="#/men.html">Men</a> <span class="subDropdown plus"></span>
+                  <ul class="level0_455" style="display:none">
+                    <li> <a href="#/men/shoes.html"> Shoes </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/men/shoes/flat-shoes.html"> Flat Shoes </a> </li>
+                        <li> <a href="#/men/shoes/boots.html"> Boots </a> </li>
+                        <li> <a href="#/men/shoes/heels.html"> Heels </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/men/Jewellery.html"> Jewellery </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/men/Jewellery/bracelets.html"> Bracelets </a> </li>
+                        <li> <a href="#/men/Jewellery/necklaces-pendants.html"> Necklaces &amp; Pendants </a> </li>
+                        <li> <a href="#/men/Jewellery/pins-brooches.html"> Pins &amp; Brooches </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/men/dresses.html"> Dresses </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/men/dresses/casual-dresses.html"> Casual Dresses </a> </li>
+                        <li> <a href="#/men/dresses/evening.html"> Evening </a> </li>
+                        <li> <a href="#/men/dresses/designer.html"> Designer </a> </li>
+                        <li> <a href="#/men/dresses/party.html"> Party </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/men/jackets.html"> Jackets </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/men/jackets/coats.html"> Coats </a> </li>
+                        <li> <a href="#/men/jackets/jackets.html"> Jackets </a> </li>
+                        <li> <a href="#/men/jackets/leather-jackets.html"> Leather Jackets </a> </li>
+                        <li> <a href="#/men/jackets/blazers.html"> Blazers </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/men/swimwear.html"> Swimwear </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/men/swimwear/swimsuits.html"> Swimsuits </a> </li>
+                        <li> <a href="#/men/swimwear/beach-clothing.html"> Beach Clothing </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                  </ul>
+                  <!--level0-->
+                </li>
+                <!--level 0-->
+                <li> <a href="#.html">Electronics</a> <span class="subDropdown plus"></span>
+                  <ul class="level0_482" style="display:none">
+                    <li> <a href="#/smartphones.html"> Smartphones </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/smartphones/samsung.html"> Samsung </a> </li>
+                        <li> <a href="#/smartphones/apple.html"> Apple </a> </li>
+                        <li> <a href="#/smartphones/blackberry.html"> Blackberry </a> </li>
+                        <li> <a href="#/smartphones/nokia.html"> Nokia </a> </li>
+                        <li> <a href="#/smartphones/htc.html"> HTC </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/cameras.html"> Cameras </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/cameras/digital-cameras.html"> Digital Cameras </a> </li>
+                        <li> <a href="#/cameras/camcorders.html"> Camcorders </a> </li>
+                        <li> <a href="#/cameras/lenses.html"> Lenses </a> </li>
+                        <li> <a href="#/cameras/filters.html"> Filters </a> </li>
+                        <li> <a href="#/cameras/tripod.html"> Tripod </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                    <li> <a href="#/accesories.html"> Accesories </a> <span class="subDropdown plus"></span>
+                      <ul class="level1" style="display:none">
+                        <li> <a href="#/accesories/headsets.html"> HeadSets </a> </li>
+                        <li> <a href="#/accesories/batteries.html"> Batteries </a> </li>
+                        <li> <a href="#/accesories/screen-protectors.html"> Screen Protectors </a> </li>
+                        <li> <a href="#/accesories/memory-cards.html"> Memory Cards </a> </li>
+                        <li> <a href="#/accesories/cases.html"> Cases </a> </li>
+                        <!--end for-each -->
+                      </ul>
+                      <!--level1-->
+                    </li>
+                    <!--level1-->
+                  </ul>
+                  <!--level0-->
+                </li>
+                <!--level 0-->
+                <li> <a href="#/digital.html">Digital</a> </li>
+                <!--level 0-->
+                <li class="last"> <a href="#/fashion.html">Fashion</a> </li>
+                <!--level 0-->
+                    </ul>
+                      <div class="wrapper">
+                          <div class="box-content box-category">
+                    Precio<br/>
+                              <a href="">$25 - $50</a>
+                    <br/>
+                    $25 - $100<br/>
+                    $100- $200<br/>
+                    $200 o mas<br/>
+                  </div>
+                      </div>
+                    <section>
+                    <hr>
+                    <div class="box-content box-category">
+                     <h3>Descuento</h3>
+                  <div>
+                    <div>Descuento del 10%</div>
+                    <div>Descuento del 25%</div>
+                    <div>Descuento del 50%</div>
+                  </div>
+                  <div>
+                    <div>Descuento del 75%</div>
+                      <div>
+
+
+
+
+
+                    </section>
+                      <div class="box-content box-category container">
+                      <h3>Opinion medida de los clientes</h3>
+                       <div class="rating-box">
+                           <div class="rating" style="width:50%"></div>
+                       </div><h3>Productos</h3>
+                       <div class="rating-box">
+                            <div class="rating" style="width:50%"></div>
+                        </div>
+                      <h3>Productos</h3>
+                      <div class="rating-box">
+                        <div class="rating" style="width:50%"></div>
+                      </div>
+                    <h3>Productos</h3>
+                    <div class="rating-box">
+                       <div class="rating" style="width:50%"></div>
+                    </div>
+                    <h3>Productos</h3>
+                    <div class="rating-box">
+                       <div class="rating" style="width:50%"></div>
+                    </div>
+                    <h3>Productos</h3>
+                    <div class="rating-box">
+                       <div class="rating" style="width:50%"></div>
+                    </div>
+                  </div>
+                 </div>
+
+
+              </div>
+
+              <div class="col-xs-6 col-sm-8">
+                  {% block conenido %}
+
+                  {% endblock %}
+              </div>
+
+              <div class="col-xs-6 col-sm-2">
+                <div class="push_img"> <a href="#"> <img  alt="women_jwellery" width="250" height="400" src="{% static "images/anuncio sillas-01.svg" %}"> </a> </div>
+                                    <HR width=100% align="center">
+                               <div class="main-content">
+                                   <div id="contact-form">
+                               <h4>Publica tu producto</h4>
+                               <form method="post" action="#">
+                                  <label for="name">Titulo <span class="required">*</span></label>
+                                  <input type="text" id="name" name="name" value="" placeholder="Titulo" required="required" autofocus="autofocus" />
+                                   <label for="message">Descripción: <span class="required">*</span></label>
+                                  <textarea id="message" name="message" placeholder="Escribe una descripción breve" required="required"></textarea>
+                                    <label for="subject">Categoria: </label>
+                                  <select id="subject" name="subject">
+                                     <option value="hello">Electronica</option>
+                                     <option value="quote">Articulo varios</option>
+                                     <option value="general">General</option>
+                                  </select>
+                                    <label for="subject">Subcategoria: </label>
+                                  <select id="subject" name="subject">
+                                     <option value="hello">Proyectores</option>
+                                     <option value="quote">loremm</option>
+                                     <option value="general">loremm</option>
+                                  </select>
+                                   <label for="subject">Tiempo<input type="date" name="tiempo" step="1"  value="2015-01-01"></label>
+                                   <label for="subject">Precio <input type="number" name="edad" min="$1" max="$9999" step="1"  required="required"></label>
+                                  <input type="submit" value="registrar" id="submit" />
+                               </form>
+                            </div>
+
+         </section>
+
+
+  <!-- End main container -->
+
+  <!-- recommend slider -->
+
+  <!-- End Recommend slider -->
+  <!-- banner section -->
+
+
+  <!-- End banner section -->
+
+  <!-- middle slider -->
 
   <!-- End middle slider -->
   <!-- promo banner section -->
-  <div class="promo-banner-section container wow">
-    <div class="container">
-      <div class="row">
-          <img alt="promo-banner3" src="{% static "images/bottom-banner.jpg" %}">
-          {% block contenido %}
-
-          {% endblock %}
-      </div>
-    </div>
-  </div>
   <!-- End promo banner section -->
 
+  <!-- Latest Blog -->
+
+  <!-- End Latest Blog -->
+
+  <!-- Featured Slider -->
+  <!-- End Featured Slider -->
+  <!-- Footer -->
+   <!--End main-container -->
+
+
+  <!--End main-container -->
   <!-- Footer -->
   <footer class="footer">
     <div class="brand-logo ">
       <div class="container">
-        <div class="slider-items-products">
-          <div id="brand-logo-slider" class="product-flexslider hidden-buttons">
-            <div class="slider-items slider-width-col6">
-              <!-- Item -->
-              <div class="item"> <a href="#x"><img src="{% static "images/b-logo1.png" %}" alt="Image"></a> </div>
-              <!-- End Item -->
-              <!-- Item -->
-              <div class="item"> <a href="#x"><img src="{% static "images/b-logo1.png" %}" alt="Image"></a> </div>
-              <!-- End Item -->
-              <!-- Item -->
-              <div class="item"> <a href="#x"><img src="{% static "images/b-logo1.png" %}" alt="Image"></a> </div>
-              <!-- End Item -->
-              <!-- Item -->
-              <div class="item"> <a href="#x"><img src="{% static "images/b-logo1.png" %}" alt="Image"></a> </div>
-              <!-- End Item -->
-              <!-- Item -->
-              <div class="item"> <a href="#x"><img src="{% static "images/b-logo1.png" %}" alt="Image"></a> </div>
-              <!-- End Item -->
-              <!-- Item -->
-              <div class="item"> <a href="#x"><img src="{% static "images/b-logo1.png" %}" alt="Image"></a> </div>
-              <!-- End Item -->
-              <!-- Item -->
-              <div class="item"> <a href="#x"><img src="{% static "images/b-logo1.png" %}" alt="Image"></a> </div>
-              <!-- End Item -->
-              <!-- Item -->
-              <div class="item"> <a href="#x"><img src="{% static "images/b-logo1.png" %}" alt="Image"></a> </div>
-              <!-- End Item -->
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
     <div class="footer-middle container">
       <div class="col-md-3 col-sm-4">
-        <div class="footer-logo"><a href="index.html" title="Logo"><img src="{% static "images/footer-logo.png" %}" alt="logo"></a></div>
+        <div class="footer-logo"><a href="index.html" title="Logo"><img src="{% static "images/logo-srt.png" %}" alt="logo"></a></div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus diam arcu. </p>
         <div class="payment-accept">
-          <div><img src="images/payment-1.png" alt="payment"> <img src="{% static "images/payment-2.png" %}" alt="payment"> <img src="{% static "images/payment-3.png" %}" alt="payment"> <img src="{% static "images/payment-4.png" %}" alt="payment"></div>
+           <div><img src="{% static 'images/payment-1.png' %}" alt="payment"> <img src="{% static "images/payment-2.png" %}" alt="payment"> <img src="{% static "images/payment-3.png" %}" alt="payment"> <img src="{% static "images/payment-4.png" %}" alt="payment"></div>
         </div>
       </div>
       <div class="col-md-2 col-sm-4">
-        <h4>Shopping Guide</h4>
+        <h4>Contactanos</h4>
         <ul class="links">
-          <li class="first"><a href="#" title="How to buy">How to buy</a></li>
-          <li><a href="faq.html" title="FAQs">FAQs</a></li>
-          <li><a href="#" title="Payment">Payment</a></li>
-          <li><a href="#" title="Shipment&lt;/a&gt;">Shipment</a></li>
-          <li><a href="delivery.html" title="delivery">Delivery</a></li>
-          <li class="last"><a href="#" title="Return policy">Return policy</a></li>
+          <li class="first"><a href="#" title="How to buy">Dudas</a></li>
+          <li><a href="faq.html" title="FAQs">Blogs</a></li>
+          <li><a href="#" title="Payment">Bolsa de trabajo</a></li>
+          <li><a href="#" title="Shipment&lt;/a&gt;">Socios</a></li>
         </ul>
       </div>
       <div class="col-md-2 col-sm-4">
-        <h4>Style Advisor</h4>
+        <h4>Ayuda y Preguntas frecuentes</h4>
         <ul class="links">
-          <li class="first"><a title="Your Account" href="login.html">Your Account</a></li>
-          <li><a title="Information" href="#">Information</a></li>
-          <li><a title="Addresses" href="#">Addresses</a></li>
-          <li><a title="Addresses" href="#">Discount</a></li>
-          <li><a title="Orders History" href="#">Orders History</a></li>
-          <li class="last"><a title=" Additional Information" href="#">Additional Information</a></li>
+          <li class="first"><a title="Your Account" href="login.html">SerentaTodo</a></li>
+          <li><a title="Information" href="#">Caracteristicas</a></li>
+          <li><a title="Addresses" href="#">Devoluciones</a></li>
+          <li><a title="Addresses" href="#">legal</a></li>
         </ul>
       </div>
       <div class="col-md-2 col-sm-4">
-        <h4>Information</h4>
+        <h4>Politicas de Privacidad</h4>
         <ul class="links">
-          <li class="first"><a href="sitemap.html" title="Site Map">Site Map</a></li>
-          <li><a href="#/" title="Search Terms">Search Terms</a></li>
-          <li><a href="#" title="Advanced Search">Advanced Search</a></li>
-          <li><a href="contact_us.html" title="Contact Us">Contact Us</a></li>
-          <li><a href="#" title="Suppliers">Suppliers</a></li>
-          <li class=" last"><a href="#" title="Our stores" class="link-rss">Our stores</a></li>
+          <li class="first"><a href="sitemap.html" title="Site Map">Sobre Nosotros</a></li>
+          <li><a href="#/" title="Search Terms">Terminos y condiciones</a></li>
+          <li><a href="#" title="Advanced Search">Transparencia de pagos</a></li>
         </ul>
       </div>
       <div class="col-md-3 col-sm-4">
-        <h4>Contact us</h4>
+        <h4>Contactanos</h4>
         <div class="contacts-info">
           <address>
           <i class="add-icon">&nbsp;</i>123 Main Street, Anytown, <br>
@@ -850,10 +1289,6 @@
 <script type="text/javascript" src="{% static "js/common.js" %}"></script>
 <script type="text/javascript" src="{% static "js/revslider.js" %}"></script>
 <script type="text/javascript" src="{% static "js/owl.carousel.min.js" %}"></script>
-
-{% block scripts  %}
-
-{% endblock %}
 <script type='text/javascript'>
 jQuery(document).ready(function(){
 jQuery('#rev_slider_4').show().revolution({
@@ -928,3 +1363,4 @@ fullScreenOffsetContainer: ''
 </script>
 </body>
 </html>
+

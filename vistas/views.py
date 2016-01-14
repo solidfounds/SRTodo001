@@ -1,10 +1,23 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib.auth import logout, authenticate
+from django.template import RequestContext
 from users.forms import  UserRegisterForm, LoginForm
 from users.models import User
 from users.functions import LogIn
 from productos.models import Producto
 # Create your views here.
+
+
+def otro_index(request):
+    return render(request, 'index-index.html')
+
+
+def handler404(request):
+    return render(request, '404.html')
+
+def my_custom_404_view(request):
+    return render_to_response('404.html')
+
 
 def index(request):
     if request.method == 'POST':

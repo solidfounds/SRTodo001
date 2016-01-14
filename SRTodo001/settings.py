@@ -25,7 +25,7 @@ SECRET_KEY = 'he*6$$g-op&20zuh!12(y#dlb^f27ky%h+u9yit2t+fr3$de97'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -114,11 +114,8 @@ STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static'),)
 
 AUTH_USER_MODEL = 'users.User'
 
-SPAGHETTI_SAUCE = {
-  'apps':['users','productos', 'vistas'],
-  'show_fields':True,
-  'exclude':{'auth':['user']}
-}
+
+SOCIAL_AUTH_USER_MODEL = "users.User"
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookAppOAuth2',
@@ -139,5 +136,13 @@ SOCIAL_AUTH_TWITTER_SECRET = 'aSpT8FPaHR41dWV16j74En48BWVSeoszLAUwhmDAOq77Sdh20L
 SOCIAL_AUTH_FACEBOOK_KEY = '189689694716144'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'dcac20b747b1e307c9bc49d3cbadc6bb'
 
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id,name,email',
+}
+
+
 DISQUS_API_KEY = 'p7oKQ2Z9yGc8sCtcof4IM2hqsOCoMtbu9BONqi1W7kxPdjyWLRY9ezwUXWtxyXSN'
 DISQUS_WEBSITE_SHORTNAME = 'SeRentaTodo'
+

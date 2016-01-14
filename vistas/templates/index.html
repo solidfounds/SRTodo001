@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="myapp">
+<html lang="es" >
 <head>
 <meta charset="utf-8">
 <!--[if IE]>
@@ -84,11 +84,7 @@
             color: #FFFFFF;
         }
     </style>
-    <script>
-        $('#myModal').on('shown.bs.modal', function () {
-          $('#myInput').focus()
-        })
-    </script>
+
 
     <!-- reCaptcha -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -298,36 +294,30 @@
                             <h5 class="text-center"><strong>Registrate y empieza a crear y compartir tus eventos:</strong></h5>
 
 
-                <div ng-app="myapp" class="ng-scope">
-                   <form name="myForm" class="ng-pristine ng-invalid ng-invalid-required" role="form" method="post">
+
+                   <form name="myForm" class="" role="form" method="post" ng-app="myapp">
                        {% csrf_token %}
                             <div >
                                 <label for="email">Email</label>
                                 {{ user_register.email }}
                                 {{ user_register.email.errors }}
-
                                 <span ng-show="myForm.email.$error.required &amp;&amp; myForm.email.$dirty" style="display: none;">required</span>
                                 <span ng-show="!myForm.email.$error.required &amp;&amp; myForm.email.$error.email &amp;&amp; myForm.email.$dirty" style="display: none;">invalid email</span>
-
                             </div>
                             <div >
                                 <label for="username">Username</label>
                                 {{ user_register.username }}
                                 {{ user_register.username.errors }}
-
                                 <span ng-show="myForm.username.$error.required &amp;&amp; myForm.username.$dirty" style="display: none;">required</span>
                                 <span ng-show="!myForm.username.$error.minLength &amp;&amp; !myForm.username.$error.maxLength &amp;&amp; myForm.username.$error.pattern &amp;&amp; myForm.username.$dirty" style="display: none;">El nombre de usuario debe de contener solo letras y numeros.</span>
                                 <span ng-show="!myForm.username.$error.required &amp;&amp; (myForm.username.$error.minlength || myForm.username.$error.maxlength) &amp;&amp; myForm.username.$dirty" style="display: none;">El nombre de usuario debe de contener de 5 a 10 caracteres.</span>
                             </div>
-
                             <div>
                                 <label for="name">Primer nombre</label>
                                 {{ user_register.first_name }}
                                 {{ user_register.first_name.errors }}
                                 <span ng-show="myForm.name.$error.required &amp;&amp; myForm.name.$dirty" style="display: none;">required</span>
                             </div>
-
-
                              <label for="password_c">Password</label>
                              <div class="form-group ">
                                  {{ user_register.password }}
@@ -336,10 +326,6 @@
                                 <span ng-show="!myForm.password.$error.required &amp;&amp; (myForm.password.$error.minlength || myForm.password.$error.maxlength) &amp;&amp; myForm.password.$dirty" style="display: none;">La contraseña debe tener entre 8 y 20 caracteres.</span>
                                 <span ng-show="!myForm.password.$error.required &amp;&amp; !myForm.password.$error.minlength &amp;&amp; !myForm.password.$error.maxlength &amp;&amp; myForm.password.$error.pattern &amp;&amp; myForm.password.$dirty" style="display: none;">La contraseña debe contener una mayuscula, y un caracter especial (número o símbolo).</span>
                             </div>
-
-
-
-
                             <div>
                                 <label for="password_c">Confirmar contraseña:</label>
                                 <input type="password" id="password_c" name="password_c" ng-model="formData.password_c" valid-password-c="" required="" class="ng-pristine ng-invalid ng-invalid-required form-group form-control">
@@ -347,8 +333,9 @@
                                 <span ng-show="!myForm.password_c.$error.required &amp;&amp; myForm.password_c.$error.noMatch &amp;&amp; myForm.password.$dirty" style="display: none;">Las contraseñas no coinciden.</span>
                             </div>
                             <button type="submit" class="btn btn-success" ng-disabled="!myForm.$valid" disabled="disabled">Enviar</button>
+                            <input type="submit" value="enviar">
                    </form>
-                </div>
+
                            <div>
                                 <h5 class = "text-center"><strong>Registrate con redes sociales</strong></h5>
                                 {% if user.is_authenticated %}

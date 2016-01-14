@@ -1,0 +1,14 @@
+{% extends 'baseaa.html' %}
+{% load staticfiles %}
+{% block contenido %}
+    <section class="content-wrapper">
+         <div class="std">
+             <div class="page-not-found">
+                 <div class="push_img"> <a href="#"> <img  alt="women_jwellery" src="{% static "svgs/error404.svg" %}"> </a> </div>
+             </div>
+         </div>
+
+    </section>
+    <p><a class="btn btn-sample  active center-block"  href="#" role="button">Clic para ir a inicio</a></p>
+    <input type="text" title="Email Address" class="input-text required-entry" id="email" value="" name="login[username]">
+{% endblock contenido %}
