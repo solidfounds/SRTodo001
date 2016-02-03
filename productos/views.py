@@ -1,6 +1,8 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
-from .models import Producto
+from .models import Producto, Inflable
+
+
 # Create your views here.
 def producto_detalle_slug(request,slug=None):
     try:
@@ -20,3 +22,12 @@ def producto_detalle(request,object_id=None):
         "object":product
     }
     return render(request, template, context)
+
+def inflable_detalle(request, object_id=None):
+    inflable = get_object_or_404(Inflable, id=object_id)
+
+    context = {
+        "inflable":inflable
+    }
+    return render(request, 'inflable/detalle_producto.html', context)
+

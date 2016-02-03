@@ -4,7 +4,7 @@ from django.template import RequestContext
 from users.forms import  UserRegisterForm, LoginForm
 from users.models import User
 from users.functions import LogIn
-from productos.models import Producto
+from productos.models import Producto, Casas, Combi, Bodega, Inflable
 # Create your views here.
 
 
@@ -26,9 +26,7 @@ def index(request):
             if user_register.is_valid():
                 User.objects.create_user(username=user_register.cleaned_data['username'],
                                              email=user_register.cleaned_data['email'],
-                                             password=user_register.cleaned_data['password'],
-                                           #tipo=user_register.cleaned_data['tipo'],
-                                         )
+                                             password=user_register.cleaned_data['password'])
                 LogIn(request, user_register.cleaned_data['username'],
                           user_register.cleaned_data['password'])
                 return redirect('home')
@@ -40,10 +38,21 @@ def index(request):
                 user = User.objects.get(username = login_form.cleaned_data['username'])
                 #user = User.objects.filter(request.user.username == login_form.cleaned_data['username'])
                 return redirect('/')
+    casas = Casas.objects.order_by('fecha_publicacion')[:3]
+    bodegas = Bodega.objects.order_by('fecha_publicacion')[:3]
+    inflables = Inflable.objects.order_by('fecha_publicacion')[:3]
+    combis = Combi.objects.order_by('fecha_publicacion')[:3]
+
+    products_sections = [casas, bodegas, inflables, combis]
 
     user_register = UserRegisterForm()
     login_form = LoginForm()
-    return render(request, 'index.html', {'user_register': user_register, 'login_form': login_form })
+    return render(request, 'index.html', {'user_register': user_register, 'login_form': login_form,
+                                          'casas':casas,
+                                          'inflables': inflables,
+                                          'combis': combis,
+                                          'bodegas':bodegas,
+                                          })
 
 def producto(request):
     productos = Producto.objects.all()
@@ -55,10 +64,11 @@ def inmobiliario(request):
     inmobiliario = Producto.objects.filter(categoria__nombre="Inmobiliario")
     return render(request,'categoria/inmobiliario.html', {'inmbl':inmobiliario} )
 
-
+"""
 def entrada(request, pk):
     identrada = Producto.objects.get(pk=int(pk))
     comentario = Comentario.objects.filter(identrada = identrada)
     d = dict(entrada= identrada,comentario = comentario,form=FormularioComentario(),usuario=request.user)
     d.update(csrf(request))
     return render_to_response("entrada.html",d)
+    """

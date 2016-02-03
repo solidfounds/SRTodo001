@@ -1,7 +1,7 @@
 
 <!-- Favicons Icon -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <!--[if IE]>
@@ -75,8 +75,6 @@
             border: 1px solid #ADC706;
             color: #FFFFFF;
         }
-    </style>
-    <style>
                 .rating{
             width:80px;
             height:16px;
@@ -130,9 +128,6 @@
         ul.rating li.five a:hover {background-position:0 -160px}
         /* end rating code */
         h3{margin:0 0 2px 0;font-size:110%}
-    </style>
-
-    <style>
                 * {
           -webkit-box-sizing: border-box;
              -moz-box-sizing: border-box;
@@ -153,8 +148,6 @@
           width: 70%;
         }
 
-    </style>
-    <style>
                   .btn-sample {
           color: #ffffff;
           background-color: #611BBD;
@@ -201,11 +194,7 @@
           background-color: #ffffff;
         }
     </style>
-    <script>
-        $('#myModal').on('shown.bs.modal', function () {
-          $('#myInput').focus()
-        })
-    </script>
+
 </head>
 <body class="cms-index-index">
 <div class="page">
@@ -1139,13 +1128,13 @@
               </div>
 
               <div class="col-xs-6 col-sm-8">
-                  {% block conenido %}
+                  {% block contenido %}
 
-                  {% endblock %}
+                  {% endblock contenido %}
               </div>
 
               <div class="col-xs-6 col-sm-2">
-                <div class="push_img"> <a href="#"> <img  alt="women_jwellery" width="250" height="400" src="{% static "images/anuncio sillas-01.svg" %}"> </a> </div>
+                <div class="push_img"> <a href="#"> <img  alt="women_jwellery" width="200" height="400" src="{% static "images/anuncio sillas-01.svg" %}"> </a> </div>
                                     <HR width=100% align="center">
                                <div class="main-content">
                                    <div id="contact-form">
@@ -1289,6 +1278,14 @@
 <script type="text/javascript" src="{% static "js/common.js" %}"></script>
 <script type="text/javascript" src="{% static "js/revslider.js" %}"></script>
 <script type="text/javascript" src="{% static "js/owl.carousel.min.js" %}"></script>
+{% block scripts %}
+
+{% endblock scripts %}
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+          $('#myInput').focus()
+        })
+    </script>
 <script type='text/javascript'>
 jQuery(document).ready(function(){
 jQuery('#rev_slider_4').show().revolution({

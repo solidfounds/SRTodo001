@@ -13,7 +13,7 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib import admin
 from django.conf.urls import  handler404
 from vistas.views import handler404
@@ -22,8 +22,10 @@ from vistas.views import handler404
 handler404 = 'vistas.views.handler404'
 
 urlpatterns = [
-        url(r'^otro-index/$', 'vistas.views.otro_index', name='logout'),
+    url(r'^otro-index/$', 'vistas.views.otro_index',),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^productos/', include('productos.urls', namespace='productos')),
+    url(r'^perfil/', include('perfil.urls', namespace='perfil')),
     url(r'^$', 'vistas.views.index', name='home'),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^salir/$', 'users.views.LogOut', name='logout'),
@@ -36,3 +38,14 @@ urlpatterns = [
 
      #url(r'^$', 'users.views.userlogin', name='login'),
 ]
+
+from django.conf import settings
+
+# ... your normal urlpatterns here
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
+
+
+        )

@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'users',
     'productos',
     'django_extensions',
+    'perfil',
     #'django_spaghetti',
     #'captcha',
     'social.apps.django_app.default',
@@ -113,7 +114,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static'),)
 
 AUTH_USER_MODEL = 'users.User'
-
+MEDIA_URL = '/media/'
 
 SOCIAL_AUTH_USER_MODEL = "users.User"
 
